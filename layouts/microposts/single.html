@@ -1,12 +1,26 @@
 {{ partial "site_header.html" . }}
 {{ partial "page_header.html" . }}
 
-  <main class="content">
-   <article class="micropost">
-     {{ .Content }}
-     <a href='{{ .Permalink }}'><aside class="dates">→ {{ .Date.Format "2006/01/02 3:04 PM" }}</aside></a>
-   </article>
-  </main>
+<main class="content">
+  <article class="micropost">
+    {{ .Content }}
+    {{ with .Resources.ByType "image" }}
+    <div class="Image">
+      {{ range $currImg := . }}
+      {{/* strips EXIF and saves some space */}}
+      {{ $largeImage := $currImg.Fit "2000x2000" }}
+      {{ $mediumImage := $currImg.Fit "600x400" }}
+      <a href="{{ $largeImage.RelPermalink }}">
+        <img src="{{ $mediumImage.RelPermalink }}">
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+    <a href='{{ .Permalink }}'>
+      <aside class="dates">→ {{ .Date.Format "2006/01/02 3:04 PM" }}</aside>
+    </a>
+  </article>
+</main>
 
 {{ partial "page_footer.html" . }}
 {{ partial "site_footer.html" . }}
