@@ -392,3 +392,11 @@ footer {
     width: 100%;
   }
 }
+
+.tag-table th:first-child {
+  width: 8em;
+}
+
+.tag-table thead {
+  text-align: left;
+}

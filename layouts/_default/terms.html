@@ -1,0 +1,26 @@
+{{ partial "site_header.html" . }}
+{{ partial "page_header.html" . }}
+
+<main class="content">
+  <article class="page">
+    <table class="tag-table">
+      <thead>
+        <tr>
+          <th>Tag</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range .Site.Taxonomies.tags }}
+        <tr>
+          <td><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></td>
+          <td>{{ .Count }}</td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </article>
+</main>
+
+{{ partial "page_footer.html" . }}
+{{ partial "site_footer.html" . }}
