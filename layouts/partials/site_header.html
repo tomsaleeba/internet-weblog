@@ -27,6 +27,12 @@
   {{ if .Site.Params.iaMicropubEndpoint }}
   <link rel="micropub" href="{{ .Site.Params.iaMicropubEndpoint }}">
   {{ end }}
+  {{ if .Site.Params.iaMeEmail }}
+  <link rel="me" href="mailto:{{ .Site.Params.iaMeEmail }}">
+  {{ end }}
+  {{ if (fileExists "static/public-pgp.key") }}
+  <link rel="me" href="{{ "public-pgp.key" | absURL }}" />
+  {{ end }}
 </head>
 
 <body class="site">
