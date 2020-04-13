@@ -31,7 +31,7 @@
   <link rel="me" href="mailto:{{ .Site.Params.iaMeEmail }}">
   {{ end }}
   {{ if (fileExists "static/public-pgp.key") }}
-  <link rel="me" href="{{ "public-pgp.key" | absURL }}" />
+  <link rel="pgpkey" href="{{ "public-pgp.key" | absURL }}" />
   {{ end }}
 </head>
 
