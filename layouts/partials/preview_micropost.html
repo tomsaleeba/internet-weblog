@@ -4,7 +4,7 @@
     {{ if (isset .Params "tags") }}
     <div class="categories">
       {{ range $i, $v := .Params.tags }}
-      <a class="category" href="/tags/{{ $v | urlize }}">
+      <a class="category" href="{{ printf "tags/%s" $v | urlize | absURL }}">
         #{{ $v }}
       </a>
       {{ end }}
@@ -20,8 +20,8 @@
     {{/* strips EXIF and saves some space */}}
     {{ $largeImage := $currImg.Fit "2000x2000" }}
     {{ $mediumImage := $currImg.Fit "600x400" }}
-    <a href="{{ $largeImage.RelPermalink }}">
-      <img src="{{ $mediumImage.RelPermalink }}">
+    <a href="{{ $largeImage.RelPermalink | absURL }}">
+      <img src="{{ $mediumImage.RelPermalink | absURL }}">
     </a>
     {{ end }}
   </div>
