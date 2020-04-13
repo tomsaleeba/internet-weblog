@@ -18,6 +18,15 @@
   {{ if .Site.Params.rssenabled }}
   <link href="{{.Site.RSSLink}}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
   {{ end }}
+  {{ if .Site.Params.iaAuthorizationEndpoint }}
+  <link rel="authorization_endpoint" href="{{ .Site.Params.iaAuthorizationEndpoint }}" />
+  {{ end }}
+  {{ if .Site.Params.iaTokenEndpoint }}
+  <link rel="token_endpoint" href="{{ .Site.Params.iaTokenEndpoint }}">
+  {{ end }}
+  {{ if .Site.Params.iaMicropubEndpoint }}
+  <link rel="micropub" href="{{ .Site.Params.iaMicropubEndpoint }}">
+  {{ end }}
 </head>
 
 <body class="site">
